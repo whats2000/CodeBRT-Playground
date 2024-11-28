@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0a0a0f;
+    color: #00ff9d;
+    font-family: 'Courier New', monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ff9d;
+    box-shadow: 0 0 20px #00ff9d, inset 0 0 20px #00ff9d;
+    border-radius: 10px;
+}
+
+.cyber-header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #00ff9d, 0 0 10px #00ff9d, 0 0 15px #00ff9d;
+    }
+    to {
+        text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d, 0 0 30px #00ff9d;
+    }
+}
+
+#gameCanvas {
+    background-color: #000;
+    border: 2px solid #ff00ff;
+    box-shadow: 0 0 15px #ff00ff;
+    margin-bottom: 20px;
+}
+
+.score-container {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #00ff9d;
+}
+
+button {
+    background-color: transparent;
+    color: #00ff9d;
+    border: 2px solid #00ff9d;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+button:hover {
+    background-color: #00ff9d;
+    color: #000;
+    box-shadow: 0 0 15px #00ff9d;
+}
+
+.instructions {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ff00ff;
+    text-shadow: 0 0 5px #ff00ff;
+}
+
+.instructions p {
+    margin: 5px 0;
+}

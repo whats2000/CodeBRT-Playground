@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖曳拼圖遊戲</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .puzzle-container {
+            width: 600px;
+            height: 600px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: #fff;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .puzzle-piece {
+            width: 196px;
+            height: 196px;
+            border: 1px solid #666;
+            cursor: move;
+            background-size: 600px 600px;
+            box-sizing: border-box;
+            transition: transform 0.2s;
+        }
+
+        .puzzle-piece:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .puzzle-piece.dragging {
+            opacity: 0.7;
+            transform: scale(1.05);
+        }
+
+        #message {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .success-message {
+            background-color: #4CAF50;
+            color: white !important;
+            padding: 15px !important;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .moves-counter {
+            font-size: 18px;
+            color: #666;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .preview-container {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 2px solid #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button onclick="scramblePieces()">重新打亂</button>
+        <button onclick="showPreview()">顯示原圖</button>
+    </div>
+    <div class="moves-counter">移動次數: <span id="moves">0</span></div>
+    <div id="message">拖曳拼圖碎片來完成拼圖！</div>
+    <div class="preview-container" id="preview" style="display: none;">
+        <img src="https://picsum.photos/600/600" alt="預覽圖" class="preview-image" id="previewImage">
+    </div>
+    <div class="puzzle-container" id="puzzleContainer"></div>
+
+    <script>
+        const puzzleContainer = document.getElementById('puzzleContainer');
+        const message = document.getElementById('message');
+        const movesElement = document.getElementById('moves');
+        const preview = document.getElementById('preview');
+        const previewImage = document.getElementById('previewImage');
+        const imageUrl = 'https://picsum.photos/600/600';
+        let pieces = [];
+        let moveCount = 0;
+
+        // 創建拼圖碎片
+        function createPuzzlePieces() {
+            for (let i = 0; i < 9; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'puzzle-piece';
+                piece.draggable = true;
+                piece.dataset.index = i;
+                
+                const x = -(i % 3) * 200;
+                const y = -Math.floor(i / 3) * 200;
+                piece.style.backgroundImage = `url(${imageUrl})`;
+                piece.style.backgroundPosition = `${x}px ${y}px`;
+                
+                piece.addEventListener('dragstart', dragStart);
+                piece.addEventListener('dragend', dragEnd);
+                piece.addEventListener('dragover', dragOver);
+                piece.addEventListener('drop', drop);
+                piece.addEventListener('touchstart', touchStart);
+                piece.addEventListener('touchmove', touchMove);
+                piece.addEventListener('touchend', touchEnd);
+                
+                pieces.push(piece);
+                puzzleContainer.appendChild(piece);
+            }
+        }
+
+        // 處理觸控事件
+        let touchStartX, touchStartY;
+        let draggedElement = null;
+
+        function touchStart(e) {
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            draggedElement = e.target;
+            e.target.classList.add('dragging');
+        }
+
+        function touchMove(e) {
+            if (!draggedElement) return;
+            e.preventDefault();
+            const touch = e.touches[0];
+            const diffX = touch.clientX - touchStartX;
+            const diffY = touch.clientY - touchStartY;
+            
+            draggedElement.style.transform = `translate(${diffX}px, ${diffY}px)`;
+        }
+
+        function touchEnd(e) {
+            if (!draggedElement) return;
+            const elements = document.elementsFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+            const dropTarget = elements.find(el => el.classList.contains('puzzle-piece') && el !== draggedElement);
+            
+            if (dropTarget) {
+                swapElements(draggedElement, dropTarget);
+                updateMoveCount();
+                checkWin();
+            }
+            
+            draggedElement.style.transform = '';
+            draggedElement.classList.remove('dragging');
+            draggedElement = null;
+        }
+
+        function showPreview() {
+            const isVisible = preview.style.display === 'block';
+            preview.style.display = isVisible ? 'none' : 'block';
+        }
+
+        function scramblePieces() {
+            const shuffled = [...pieces].sort(() => Math.random() - 0.5);
+            shuffled.forEach(piece => puzzleContainer.appendChild(piece));
+            moveCount = 0;
+            movesElement.textContent = moveCount;
+            message.textContent = '拖曳拼圖碎片來完成拼圖！';
+            message.className = '';
+        }
+
+        function dragStart(e) {
+            e.target.classList.add('dragging');
+            e.dataTransfer.setData('text/plain', e.target.dataset.index);
+        }
+
+        function dragEnd(e) {
+            e.target.classList.remove('dragging');
+        }
+
+        function dragOver(e) {
+            e.preventDefault();
+        }
+
+        function drop(e) {
+            e.preventDefault();
+            const draggedIndex = e.dataTransfer.getData('text/plain');
+            const draggedElement = document.querySelector(`[data-index="${draggedIndex}"]`);
+            const dropTarget = e.target.closest('.puzzle-piece');
+            
+            if (dropTarget && draggedElement !== dropTarget) {
+                swapElements(draggedElement, dropTarget);
+                updateMoveCount();
+                checkWin();
+            }
+        }
+
+        function swapElements(el1, el2) {
+            const temp = document.createElement('div');
+            el1.parentNode.insertBefore(temp, el1);
+            el2.parentNode.insertBefore(el1, el2);
+            temp.parentNode.insertBefore(el2, temp);
+            temp.parentNode.removeChild(temp);
+        }
+
+        function updateMoveCount() {
+            moveCount++;
+            movesElement.textContent = moveCount;
+        }
+
+        function checkWin() {
+            const currentOrder = Array.from(puzzleContainer.children).map(piece => piece.dataset.index);
+            const isCorrect = currentOrder.every((value, index) => Number(value) === index);
+            
+            if (isCorrect) {
+                message.textContent = `恭喜！您用了 ${moveCount} 步完成拼圖！`;
+                message.className = 'success-message';
+            }
+        }
+
+        // 初始化遊戲
+        createPuzzlePieces();
+        scramblePieces();
+    </script>
+</body>
+</html>

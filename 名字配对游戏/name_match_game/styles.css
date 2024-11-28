@@ -1,0 +1,149 @@
+body {
+    font-family: 'Ma Shan Zheng', cursive, sans-serif;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    overflow: hidden;
+    transform: perspective(1000px);
+}
+
+h1 {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    perspective: 1000px;
+}
+
+#names-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.name-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2em;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+@keyframes flipIn {
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotateY(0);
+    }
+}
+
+.name-card.show {
+    animation: flipIn 0.5s ease forwards;
+}
+
+.name-card:hover {
+    transform: scale(1.05) rotateY(-10deg);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.name-card.selected {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.name-card.matched {
+    background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+    animation: bounce 0.5s;
+    cursor: not-allowed;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.hidden {
+    display: none;
+}
+
+#score-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#score-container p {
+    font-size: 1.2em;
+    color: #333;
+    background-color: rgba(255,255,255,0.8);
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+#restart-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff9a9e 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1em;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+#restart-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+}
+
+#result-container {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#result-container {
+    animation: fadeIn 0.5s ease forwards;
+}

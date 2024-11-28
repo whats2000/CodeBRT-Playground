@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="board-container">
+            <div class="coordinates top-coordinates"></div>
+            <div class="board-wrapper">
+                <div class="coordinates left-coordinates"></div>
+                <div id="board" class="chessboard"></div>
+                <div class="coordinates right-coordinates"></div>
+            </div>
+            <div class="coordinates bottom-coordinates"></div>
+        </div>
+        <div class="game-info">
+            <div id="turn-display">White's Turn</div>
+            <div id="captured-pieces">
+                <div class="captured-white"></div>
+                <div class="captured-black"></div>
+            </div>
+            <button id="restart-button" class="restart-button">Restart Game</button>
+        </div>
+    </div>
+    <script src="js/chessPieces.js"></script>
+    <script src="js/chessBoard.js"></script>
+    <script src="js/gameLogic.js"></script>
+</body>
+</html>

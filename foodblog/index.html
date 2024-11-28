@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Delicious Food Blog</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for food...">
+            <button onclick="searchFood()">Search</button>
+        </div>
+        <button id="showAddForm" class="add-button">Add New Post</button>
+    </header>
+
+    <main>
+        <div id="searchResults"></div>
+        <div id="blogPosts"></div>
+    </main>
+
+    <!-- Modal for adding new posts -->
+    <div id="addPostModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Food Blog Post</h2>
+            <form id="addPostForm" onsubmit="addNewPost(event)">
+                <div class="form-group">
+                    <label for="newTitle">Title:</label>
+                    <input type="text" id="newTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="newImage">Image URL:</label>
+                    <input type="url" id="newImage" required>
+                </div>
+                <div class="form-group">
+                    <label for="newDescription">Description:</label>
+                    <textarea id="newDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="newContent">Content:</label>
+                    <textarea id="newContent" required></textarea>
+                </div>
+                <button type="submit">Add Post</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賽博龐克貪食蛇</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="cyber-header">
+            <h1>賽博龐克貪食蛇</h1>
+            <div class="score-container">分數: <span id="score">0</span></div>
+        </div>
+        <canvas id="gameCanvas"></canvas>
+        <div class="controls">
+            <button onclick="startGame()">開始遊戲</button>
+            <div class="instructions">
+                <p>使用方向鍵控制蛇的移動</p>
+                <p>收集像素方塊來增加分數</p>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
