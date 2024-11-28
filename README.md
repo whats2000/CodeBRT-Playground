@@ -61,6 +61,7 @@ This repository contains various AI-generated code demos. Each demo showcases di
 
 > [!NOTE]
 > 沒錯，這是項目本身也是一個示範，展示了如何使用 CodeBRT 來從零撰寫一個項目的文檔。
+> 請注意，這個示範專案並不是一個完整的應用程序，而是一個展示不同功能和概念的集合。你可以自由基於這些示範擴展和構建自己的應用程序。
 
 ## 如何貢獻
 歡迎任何新示範或改進現有功能的貢獻！
