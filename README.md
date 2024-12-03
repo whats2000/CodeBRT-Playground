@@ -2,69 +2,69 @@
 
 This repository contains various AI-generated code demos. Each demo showcases different functionalities and concepts:
 
-## 1. BERT 用法示範
+## 1. BERT Usage Demonstration
 ### Hybrid BERT Embedding
-- **文件**: `hybrid_bert_embedding.py`
-- **描述**: 此腳本實現了一個混合 BERT 嵌入模型，使用了 SBERT 和 SECBERT 模型來生成文本的嵌入向量。
-- **使用方法**: 執行該腳本將會生成示例文本的嵌入。
+- **File**: `BERT Usage/hybrid_bert_embedding.py`
+- **Description**: This script implements a hybrid BERT embedding model that uses SBERT and SECBERT models to generate embedding vectors for text.
+- **Usage**: Running this script will generate embeddings for sample texts.
 
-### 拼圖遊戲
-- **文件**: `puzzle.html`
-- **描述**: 一個簡單的拖曳拼圖遊戲，玩家需要把打亂的拼圖片拖動到正確的位置來完成拼圖。遊戲使用原生 JavaScript 實現，包含基本的樣式和動畫效果。
+### Puzzle Game
+- **File**: `PuzzleGame/puzzle.html`
+- **Description**: A simple drag-and-drop puzzle game where players need to drag scrambled puzzle pieces to the correct position to complete the puzzle. The game is implemented using native JavaScript and includes basic styles and animations.
 
-## 2. 棋類遊戲
-- **文件**: `chess/chess/index.html`
-- **描述**: 一個簡單的棋盤遊戲，使用 HTML、CSS 和 JavaScript 實現用戶交互。玩家可以選擇和移動棋子，基本棋盤互動邏輯在 `js/chessBoard.js` 和 `js/gameLogic.js` 中實現。
+## 2. Chess 1
+- **File**: `Chess1/chess/index.html`
+- **Description**: A simple board game implemented using HTML, CSS, and JavaScript that allows users to select and move pieces. Basic board interaction logic is implemented in `js/chessBoard.js` and `js/gameLogic.js`.
 
-## 3. 美食博客
-- **文件**: `foodblog/index.html`, `foodblog/data.js`, `foodblog/script.js`
-- **描述**: 一個簡單的前端美食博客應用，允許用戶查看、搜索和新增博客文章。數據存儲在 `localStorage` 中，並通過 JavaScript 管理博客的顯示與交互。
+## 3. Food Blog
+- **File**: `FoodBlog/index.html`, `FoodBlog/data.js`, `FoodBlog/script.js`
+- **Description**: A simple front-end food blog application that allows users to view, search, and add blog posts. Data is stored in `localStorage`, and the display and interaction of the blog are managed via JavaScript.
 
-## 4. 下載 YouTube 影片
-- **文件**: `下載YouTube影片/youtube_downloader.py`
-- **描述**: 此 Python 腳本可以從 YouTube 下載影片。用戶只需提供影片的 URL 即可進行下載。
+## 4. Download YouTube Video
+- **File**: `DownloadYouTubeVideo/youtube_downloader.py`
+- **Description**: This Python script can download videos from YouTube. Users only need to provide the URL of the video to download.
 
-## 5. 名字配對遊戲
-- **文件**: `名字配对游戏/name_match_game/game.js`
-- **描述**: 一個簡單的互動遊戲，玩家需要將配對的名字匹配在一起。遊戲包括顏色隨機化和音效效果的添加，增強了遊戲體驗。
+## 5. Name Match Game
+- **File**: `NameMatchGame/name_match_game/game.js`
+- **Description**: A simple interactive game where players need to match paired names together. The game includes color randomization and sound effects to enhance the gaming experience.
 
-## 6. 西洋棋
-- **文件**: `西洋棋/chess_game.py`
-- **描述**: 這是一個基於命令行的西洋棋遊戲，使用 Python 實現。玩家可以選擇和移動棋子，並且有基本的遊戲邏輯處理。
+## 6. Chess 2
+- **File**: `Chess2/chess_game.py`
+- **Description**: A command-line chess game implemented in Python. Players can select and move pieces and basic game logic is handled.
 
-## 7. RAG系統
-- **文件**: `RAG系統/README.md`
-- **描述**: 一個基於 Python 的檢索增強生成 (RAG) 系統，用於分析和總結與公司相關的信息。
+## 7. RAG System
+- **File**: `RAG System/README.md`
+- **Description**: A retrieval-augmented generation (RAG) system based on Python, used for analyzing and summarizing information related to the company.
 
-## 8. React 餐廳網站
-- **文件**: `React餐廳網站/restaurant-list/README.md`
-- **描述**: 本模板提供了一個基本的設置，以便在 Vite 中運行 React，並包含熱模組替換 (HMR) 和一些 ESLint 規則。
+## 8. React Restaurant Website
+- **File**: `ReactRestaurantWebsite/restaurant-list/README.md`
+- **Description**: This template provides a basic setup to run React in Vite, including hot module replacement (HMR) and some ESLint rules.
 
-## 9. 幾 A 幾 B 猜數字遊戲
-- **文件**: `幾A幾B小遊戲/guess_number_game.py`
-- **描述**: 一個簡單的猜數字遊戲，玩家需要猜出一個不重複的四位數字，並根據反饋判斷自己的猜測是否正確。
+## 9. AB Guessing Number Game
+- **File**: `ABGuessingNumberGame/guess_number_game.py`
+- **Description**: A simple guessing number game where players need to guess a unique four-digit number and receive feedback on whether their guess is correct.
 
-## 10. 猜拳小遊戲
-- **文件**: `猜拳小遊戲/guessing_game.html`
-- **描述**: 一個有趣的猜拳遊戲，玩家可以選擇剪刀、石頭或布來與電腦對戰。遊戲會顯示玩家和電腦的分數，並在每局結束後更新結果。
+## 10. Rock-Paper-Scissors Game
+- **File**: `RockPaperScissorsGame/guessing_game.html`
+- **Description**: An entertaining rock-paper-scissors game where players can choose scissors, rock, or paper to compete against the computer. The game displays scores for both the player and the computer, updating results at the end of each round.
 
-## 11. 圖書租借系統
-- **文件**: `圖書租借系統/README.md`
-- **描述**: 一個用於書籍管理的系統，包含功能如新增書籍、註冊會員、借書和還書等。用戶可通過命令行界面進行操作。
+## 11. Library Rental System
+- **File**: `LibraryRentalSystem/README.md`
+- **Description**: A system for managing books that includes features such as adding books, registering members, borrowing, and returning books. Users can operate via a command-line interface.
 
-## 12. 塞伯龐克貪食蛇
-- **文件**: `塞伯龐克貪食蛇/game.js`
-- **描述**: 一個以賽博龐克風格設計的貪食蛇遊戲。玩家控制蛇在畫布上移動，吃食物以增長身體並獲得分數，還需要避開邊界和自身的身體。
+## 12. Cyber Snake Game
+- **File**: `CyberSnakeGame/game.js`
+- **Description**: A snake game designed with a cyberpunk style. Players control the snake to move on the canvas, eat food to grow longer and score points while avoiding the edges and their own body.
 
-## 專案說明
-這個專案不僅展示了各種程式碼示範，還提供了文檔撰寫的範本和最佳實踐，這可以幫助開發者在自己的項目中用 CodeBRT 快速編寫清晰且結構化的文檔。
+## Project Description
+This project not only showcases various code demos but also provides templates and best practices for writing documentation, helping developers quickly create clear and structured documents for their own projects using CodeBRT.
 
 > [!NOTE]
-> 沒錯，這是項目本身也是一個示範，展示了如何使用 CodeBRT 來從零撰寫一個項目的文檔。
-> 請注意，這個示範專案並不是一個完整的應用程序，而是一個展示不同功能和概念的集合。你可以自由基於這些示範擴展和構建自己的應用程序。
+> Indeed, this project itself serves as a demonstration of how to use CodeBRT to write documentation for a project from scratch.
+> Please note that this demonstration project is not a complete application, but a collection showcasing different functionalities and concepts. You are free to expand and build your own applications based on these demonstrations.
 
-## 如何貢獻
-歡迎任何新示範或改進現有功能的貢獻！
+## How to Contribute
+Contributions of any new demonstrations or improvements to existing functionalities are welcome!
 
-## 許可證
-本項目根據 MIT 許可證授權。詳細資訊請參見 LICENSE 文件。
+## License
+This project is licensed under the MIT License. For more details, please refer to the LICENSE file.
