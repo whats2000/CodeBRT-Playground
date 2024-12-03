@@ -1,0 +1,35 @@
+const PIECES = {
+    WHITE_KING: '♔', BLACK_KING: '♚',
+    WHITE_QUEEN: '♕', BLACK_QUEEN: '♛',
+    WHITE_ROOK: '♖', BLACK_ROOK: '♜',
+    WHITE_BISHOP: '♗', BLACK_BISHOP: '♝',
+    WHITE_KNIGHT: '♘', BLACK_KNIGHT: '♞',
+    WHITE_PAWN: '♙', BLACK_PAWN: '♟'
+};
+
+const PIECE_IMAGES = {
+    '♔': 'white-king.png', '♚': 'black-king.png',
+    '♕': 'white-queen.png', '♛': 'black-queen.png',
+    '♖': 'white-rook.png', '♜': 'black-rook.png',
+    '♗': 'white-bishop.png', '♝': 'black-bishop.png',
+    '♘': 'white-knight.png', '♞': 'black-knight.png',
+    '♙': 'white-pawn.png', '♟': 'black-pawn.png'
+};
+
+class ChessPiece {
+    constructor(type, color) {
+        this.type = type;
+        this.color = color;
+        this.hasMoved = false;
+    }
+
+    getPossibleMoves(board, currentPosition) {
+        // Will be implemented for each specific piece type
+        return [];
+    }
+
+    isValidMove(board, start, end) {
+        // Base validation logic
+        return true;
+    }
+}

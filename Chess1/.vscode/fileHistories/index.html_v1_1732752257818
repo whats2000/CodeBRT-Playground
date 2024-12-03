@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div id="board" class="chessboard"></div>
+        <div class="game-info">
+            <div id="turn-display">White's Turn</div>
+            <div id="captured-pieces">
+                <div class="captured-white"> You view the website and tell me what you see check it</div>
+                <div class="captured-black"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/chessPieces.js"></script>
+    <script src="js/chessBoard.js"></script>
+    <script src="js/gameLogic.js"></script>
+</body>
+</html>
