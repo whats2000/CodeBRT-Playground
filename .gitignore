@@ -16,3 +16,10 @@
 /RAG System/.vscode
 /NextWebsiteDemo/.vscode
 /SubString/.vscode
+/BlogWebsite/.vscode
+/TextToVoiceConverter/output_voices
+/TextToVoiceConverter/.vscode
+TextToVoiceConverter/reference.wav
+TextToVoiceConverter/文稿.docx
+TextToVoiceConverter/ffmpeg.exe
+TextToVoiceConverter/ffprobe.exe
